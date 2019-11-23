@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll n;
+		cin>>n;
+		ll h[n];
+		ll d[n];
+		ll prev,hei;
+		cin>>prev>>hei;
+		h[0]=hei;
+		ll dp=0;
+		ll diff[n];
+		for(ll i=0;i<n-1;i++)
+		{
+			ll x,y;
+			cin>>x>>y;
+			diff[i]=(x-prev);
+			d[i]=diff[i]+dp;
+			dp=diff[i];
+			prev=x;
+			h[i+1]=y;
+		}
+		d[n-1]=diff[n-2];
+		sort(d,d+n);
+		//reverse(d,d+n);
+		sort(h,h+n);
+		//reverse(h,h+n);
+		ll sum=0;
+		for(ll i=0;i<n;i++)
+		{
+			sum+=d[i]*h[i];
+		}
+		cout<<sum<<"\n";
+	}
+	return 0;
+}
