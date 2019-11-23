@@ -1,0 +1,57 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+	ll t;
+	cin>>t;
+	while(t--)
+	{
+		ll n,m;
+		cin>>n>>m;
+		ll arr[n][m];
+		ll brr[n][m];
+		for(ll i=0;i<n;i++)
+		{
+			string str;
+			cin>>str;
+			for(ll j=0;j<m;j++)
+			{
+				arr[i][j]=ll(str[j]-'0');
+			}
+		}
+		for(ll i=0;i<n;i++)
+		{
+			string str;
+			cin>>str;
+			for(ll j=0;j<m;j++)
+			{
+				brr[i][j]=ll(str[j]-'0');
+			}
+		}
+		ll ans=INT_MAX;
+		for(ll dx=-n;dx<=n;dx++)
+		{
+			for(ll dy=-m;dy<=m;dy++)
+			{
+				ll cur=0;
+				for(ll i=0;i<n;i++)
+				{
+					for(ll j=0;j<m;j++)
+					{
+						if(i+dx<0 or i+dx>=n or j+dy<0 or j+dy>=m)
+						{
+							cur+=arr[i][j];
+						}
+						else
+						cur+=(arr[i][j]!=brr[i+dx][j+dy]);
+					}
+				}
+				ans=min(ans,cur);
+			}
+		}
+		cout<<ans<<"\n";
+	}
+	return 0;
+}
+		
