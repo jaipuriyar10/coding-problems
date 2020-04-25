@@ -8,6 +8,8 @@ ll solve(ll n,ll k)
     return k;
     if(n<=0)
     return 0;
+    if(n==1)
+        return k;
     if(dp[n][k]!=-1)
     return dp[n][k];
     ll ans=INT_MAX;
